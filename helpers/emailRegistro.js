@@ -2,6 +2,7 @@ import nodemailer from 'nodemailer';
 
 const emailRegistro = async ( datos ) => {
   try {
+    console.log('Inicia el envio de email');
     const transporter = nodemailer.createTransport({
       host: process.env.EMAIL_HOST,
       port: process.env.EMAIL_PORT,
@@ -10,9 +11,9 @@ const emailRegistro = async ( datos ) => {
         pass: process.env.EMAIL_PASS,
       }
     });
-
+    console.log('Creo el transport');
     const { email, nombre, token } = datos;
-
+    console.log('Supero los datos');
     const info = await transporter.sendMail({
       from: "APV administrador de pacientes de veterinaria.",
       to: email,
